@@ -5,7 +5,6 @@ python main.py [-h] [-t <token file>] [-c <category>]
 
 # Config
 
-config.py: change default token path, wkhtmltopdf path, css path and output path
 category.py: add/remove category
 
 # Scripts

@@ -5,8 +5,14 @@ from datetime import datetime
 from feedly.api_client.session import FeedlySession
 from feedly.api_client.stream import StreamOptions
 
-BACKTRACKING = 10000 # unit: hour
-MAX_RSS = 29
+TEST = False
+
+if TEST:
+    BACKTRACKING = 10000 # unit: hour
+    MAX_RSS = 30
+else:
+    BACKTRACKING = 24 # unit: hour
+    MAX_RSS = 150
 
 class FeedlyRSS:
     '''Access RSS feed via Feedly token
@@ -39,3 +45,5 @@ class FeedlyRSS:
                     self.article_json_list.append(con.json)
                 else:
                     break
+        l = len(self.article_json_list)
+        print('%s articles detected.'%l)

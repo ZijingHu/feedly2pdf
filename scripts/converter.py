@@ -6,11 +6,10 @@ from datetime import datetime
 import pdfkit
 
 OPTIONS = {
-    'encoding': 'UTF-8',        
-    'margin-left': '15mm',
-    'margin-right': '15mm',
-    'margin-bottom': '25mm',
-    'margin-top': '25mm'
+    'margin-left': '12mm',
+    'margin-right': '12mm',
+    'margin-bottom': '20mm',
+    'margin-top': '20mm'
 }
 
 class Converter:
@@ -42,7 +41,8 @@ class Converter:
         for a in article_list:
             self.content += a.content 
         self.content = self.content.replace('<p></p><br>', '')
-        html_string = '<html><head></head><body>%s</body></html>'%self.content
+        meta = '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'
+        html_string = '<html><head>%s</head><body>%s</body></html>'%(meta, self.content)
         pdfkit.from_string(html_string, 
                      self.out,
                      options=OPTIONS,
